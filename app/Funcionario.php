@@ -11,4 +11,15 @@ class Funcionario extends Model
     protected $fillable 	= ['nombre', 'mail','ci'];
 
     public $timestamps = false;
+
+
+    public function fechas($fecInicio, $fecFinal)
+    {
+        $fMarcaciones = Marcacion::where('ci','=',$this->ci)
+        ->where('fecha','>=',$fecInicio.' 08:01:00')->where('fecha','<=',$fecFinal.' 11:59:59')
+        ->select('marcaciones.fecha','marcaciones.ci')->get();
+        //dd($fMarcaciones);
+        return $fMarcaciones;
+    }
+
 }
