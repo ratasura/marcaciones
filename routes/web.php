@@ -28,3 +28,6 @@ Route::resource('funcionarios','FuncionarioController');
 Route::get('historico','HistoricoController@index');
 Route::post('historico','HistoricoController@indexbusqueda')->name('historico');
 
+
+// envio de notificaciones 
+Route::get('notificar/{id}', 'NotificacionAtrasoController@index')->name('notificar');

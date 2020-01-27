@@ -17,7 +17,7 @@ class Funcionario extends Model
     {
         $fMarcaciones = Marcacion::where('ci','=',$this->ci)
         ->where('fecha','>=',$fecInicio.' 08:01:00')->where('fecha','<=',$fecFinal.' 11:59:59')
-        ->select('marcaciones.fecha','marcaciones.ci')->get();
+        ->select('marcaciones.fecha','marcaciones.id','marcaciones.ci','marcaciones.nombre')->get();
         //dd($fMarcaciones);
         return $fMarcaciones;
     }
