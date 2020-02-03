@@ -13,9 +13,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Auth\LoginController@showLoginForm');
+Route::get('welcome','WelcomeController@index')->name('welcome');
+Route::post('login','Auth\LoginController@login')->name('login');
+Route::post('logout','Auth\LoginController@logout')->name('logout');
+
 // importar csv a la aplicacion 
 Route::get('cargar','MarcacionesController@cargaview')->name('cargar');
 Route::post('cargar','MarcacionesController@importar')->name('subir');
@@ -30,4 +32,4 @@ Route::post('historico','HistoricoController@indexbusqueda')->name('historico');
 
 
 // envio de notificaciones 
-Route::get('notificar/{id}', 'NotificacionAtrasoController@index')->name('notificar');
+Route::get('notificar/{id}/{fecha}', 'NotificacionAtrasoController@index')->name('notificar');

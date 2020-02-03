@@ -9,36 +9,48 @@ use Illuminate\Support\Facades\DB;
 
 class HistoricoController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+      }
+
     public function index(Request $request){
+        $funcionarios = Funcionario::paginate(50);
 
         if(isset($request->fecInicio) && isset($request->fecFinal))
         {
             $fecInicio = $request->fecInicio;
             $fecFinal = $request->fecFinal;
             //dd($request->all());
+           $funcionarios = $funcionarios->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal]); 
         }
         else{
             $fecInicio= date('Y-m-d');
             $fecFinal= date('Y-m-d');
+            $funcionarios = $funcionarios->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal]); 
         }
-        $funcionarios = Funcionario::paginate(20);
+        
         //dd($request->all());
         return view('historico.listar',compact('funcionarios','fecInicio','fecFinal'));
     }
 
     public function indexbusqueda(Request $request)
     {
+        $funcionarios = Funcionario::paginate(50);
+
         if(isset($request->fecInicio) && isset($request->fecFinal))
         {
             $fecInicio = $request->fecInicio;
             $fecFinal = $request->fecFinal;
-           // dd($request->all());
+            //dd($request->all());
+           $funcionarios = $funcionarios->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal]); 
         }
         else{
             $fecInicio= date('Y-m-d');
             $fecFinal= date('Y-m-d');
+            $funcionarios = $funcionarios->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal]); 
         }
-        $funcionarios = Funcionario::paginate(20);
+        
         //dd($request->all());
         return view('historico.listar',compact('funcionarios','fecInicio','fecFinal'));
 

@@ -9,18 +9,24 @@ use Illuminate\Support\Facades\Mail;
 
 class NotificacionAtrasoController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+      }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index($id, $fecha)
     {
-        $mail = Funcionario::findOrFail($id);
-        $mail = $mail->mail;
+        $funcionario = Funcionario::findOrFail($id);
+        $mail = $funcionario->mail;
+        $ci = $funcionario->ci;
+        $nombre = $funcionario->nombre;
         $mail = trim($mail);
-        dd($mail);
+        //dd($id,$ci,$nombre,$fecha);
         Mail::to($mail)->send(new NotificacionAtraso);
+        return back();
         
     }
 

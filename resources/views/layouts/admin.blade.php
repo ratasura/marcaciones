@@ -43,33 +43,26 @@
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
               <!-- Messages: style can be found in dropdown.less-->
-              
+
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <small class="bg-red">Online</small>
-                  <span class="hidden-xs">Admin</span>
+                  <small class="bg-red">En linea &nbsp; </small>
+                  <span class="hidden-xs">{{auth()->user()->name}}</span>
                 </a>
+
                 <ul class="dropdown-menu">
-                  <!-- User image -->
-                  <li class="user-header">
-                    
-                    <p>
-                      www.pachamamasoft.com - Desarrollando Software
-                      <small>www.youtube.com/</small>
-                    </p>
-                  </li>
-                  
-                  <!-- Menu Footer-->
                   <li class="user-footer">
-                    
                     <div class="pull-right">
-                      <a href="{{url('/logout')}}" class="btn btn-default btn-flat">Cerrar</a>
+                      <form class="" action="{{ route('logout') }}" method="post">
+                        {{ csrf_field() }}
+                        <button class="btn btn-danger btn-xs btn-block" >Cerrar sesion</button>
+                      </form>
                     </div>
                   </li>
                 </ul>
               </li>
-              
+
             </ul>
           </div>
 
@@ -80,12 +73,12 @@
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
           <!-- Sidebar user panel -->
-                    
+
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header"></li>
 
-            
+
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-laptop"></i>
@@ -93,7 +86,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{url('/')}}"><i class="fa fa-circle-o"></i> Pagina de inicio</a></li>
+                <li><a href="{{url('welcome')}}"><i class="fa fa-circle-o"></i> Pagina de inicio</a></li>
                 {{-- <li><a href="{{url('almacen/articulo')}}"><i class="fa fa-circle-o"></i> Artículos</a></li> --}}
               </ul>
             </li>
@@ -105,13 +98,13 @@
               </a>
               <ul class="treeview-menu">
                {{-- <li><a href="{{url('/')}}"><i class="fa fa-circle-o"></i> Inicio</a></li> --}}
-                <li><a href="{{url('cargar')}}"><i class="fa fa-circle-o"></i> Cargar archivo</a></li>               
+                <li><a href="{{url('cargar')}}"><i class="fa fa-circle-o"></i> Cargar archivo</a></li>
                 <li><a href="{{url('listar')}}"><i class="fa fa-circle-o"></i> Listar Marcaciones</a></li> --}}
               </ul>
             </li>
 
 
-            
+
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-user"></i>
@@ -135,8 +128,8 @@
 
               </ul>
             </li>
-            
-             
+
+
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-folder"></i> <span>Acceso</span>
@@ -144,7 +137,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="{{url('seguridad/usuario')}}"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-                
+
               </ul>
             </li>
              <li>
@@ -159,7 +152,7 @@
                 <small class="label pull-right bg-yellow">IT</small>
               </a>
             </li>
-                        
+
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -172,10 +165,10 @@
        <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
-        
+
         <!-- Main content -->
         <section class="content">
-          
+
           <div class="row">
             <div class="col-md-12">
               <div class="box">
@@ -183,7 +176,7 @@
                   <h3 class="box-title">Sistema de Marcaciones</h3>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    
+
                     <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                   </div>
                 </div>
@@ -196,7 +189,7 @@
 		                          <!--Fin Contenido-->
                            </div>
                         </div>
-		                    
+
                   		</div>
                   	</div><!-- /.row -->
                 </div><!-- /.box-body -->
@@ -211,10 +204,10 @@
         <div class="pull-right hidden-xs">
           <b>Version</b> 2.3.0
         </div>
-        <strong>Copyright &copy; 2017 <a href="www.pachasoft.com">PachamamaSoft</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2017 <a href="www.pachasoft.com"></a>.</strong> All rights reserved.
       </footer>
 
-      
+
     <!-- jQuery 2.1.4 -->
     <script src="{{asset('js/jQuery-2.1.4.min.js')}}"></script>
     @stack('scripts') <!-- para usas jscript -->
@@ -223,6 +216,6 @@
     <script src="{{asset('js/bootstrap-select.min.js')}}"></script>
     <!-- AdminLTE App -->
     <script src="{{asset('js/app.min.js')}}"></script>
-    
+
   </body>
 </html>

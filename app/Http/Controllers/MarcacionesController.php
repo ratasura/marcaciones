@@ -9,6 +9,10 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class MarcacionesController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+      }
     
     public function cargaview()
     {
@@ -21,7 +25,7 @@ class MarcacionesController extends Controller
             'import_file' => 'required'
         ]);
         Excel::import(new ImportMarcaciones, request()->file('import_file'));
-        return back()->with('success', 'Importacion correcta');
+        return back()->with('status', 'archivo importado correctamente ');
 
     }
 

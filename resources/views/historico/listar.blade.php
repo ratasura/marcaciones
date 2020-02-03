@@ -42,15 +42,21 @@
                             <th>{{$fecha->nombre}}</th>
                             <th>{{Carbon\Carbon::parse($fecha->fecha)}}</th>
                             <th>
-                                <a href="#"><button class="btn btn-primary" disabled data-toggle="modal" data-target="#fm-modal">Detalles</button></a>
-                                <a href="{{ route('notificar', $info->id) }}"><button class="btn btn-danger">Notificar</button></a>
+                                {{-- <a href="#"><button class="btn btn-primary" disabled data-toggle="modal" data-target="#fm-modal">Detalles</button></a> --}}
+                                <a href="{{ route('notificar',
+                                  ['id'=> $info->id,'fecha'=>$fecha->fecha])}} "
+                                    class="btn btn-danger btn-sm">Notificar</a>
                                 
                             </th> 
                        @endif
-                        
+                       
                     @endforeach
+                    
                 </tr>
                 @endforeach
+                {{-- @if (session('status'))
+                       <h2>{{ session('status') }}</h2>
+                @endif --}}
             </tbody>
         </table>
     </div>
