@@ -7,9 +7,9 @@
         <form action="{{route('historico')}}" name="form-general" class="form-horizontal" method="POST">
                       @csrf
                       <label for="fecInicio">Fecha de Inicio</label>
-                      <input type="date" name="fecInicio">
+        <input type="date" name="fecInicio" value="{{$fecInicio}}">
                       <label for="fecFinal">Fecha de Inicio</label>
-                      <input type="date" name="fecFinal">
+                      <input type="date" name="fecFinal" value="{{$fecFinal}}">
                       <button type="submit">Enviar</button>
         </form>
     </div>    
