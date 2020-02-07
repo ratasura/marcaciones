@@ -21,17 +21,19 @@ class HistoricoController extends Controller
         {
             $fecInicio = $request->fecInicio;
             $fecFinal = $request->fecFinal;
+            $jornada = $request->jornada;
             //dd($request->all());
-           $funcionarios = $funcionarios->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal]); 
+           $funcionarios = $funcionarios->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal, 'jornada'=>$jornada]); 
         }
         else{
             $fecInicio= date('Y-m-d');
             $fecFinal= date('Y-m-d');
-            $funcionarios = $funcionarios->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal]); 
+            $jornada = '0';
+            $funcionarios = $funcionarios->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal, 'jornada'=>$jornada]); 
         }
         
-        //dd($request->all());
-        return view('historico.listar',compact('funcionarios','fecInicio','fecFinal'));
+       // dd($request->all());
+        return view('historico.listar',compact('funcionarios','fecInicio','fecFinal','jornada'));
     }
 
     public function indexbusqueda(Request $request)
@@ -42,17 +44,19 @@ class HistoricoController extends Controller
         {
             $fecInicio = $request->fecInicio;
             $fecFinal = $request->fecFinal;
+            $jornada = $request->jornada;
             //dd($request->all());
-           $funcionarios = $funcionarios->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal]); 
+           $funcionarios = $funcionarios->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal, 'jornada'=>$jornada]); 
         }
         else{
             $fecInicio= date('Y-m-d');
             $fecFinal= date('Y-m-d');
-            $funcionarios = $funcionarios->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal]); 
+            $jornada = '0';
+            $funcionarios = $funcionarios->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal, 'jornada'=>$jornada]); 
         }
         
-        //dd($request->all());
-        return view('historico.listar',compact('funcionarios','fecInicio','fecFinal'));
+       // dd($request->all());
+        return view('historico.listar',compact('funcionarios','fecInicio','fecFinal','jornada'));
 
     }
 

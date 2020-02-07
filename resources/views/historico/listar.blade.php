@@ -7,10 +7,19 @@
         <form action="{{route('historico')}}" name="form-general" class="form-horizontal" method="POST">
                       @csrf
                       <label for="fecInicio">Fecha de Inicio</label>
-        <input type="date" name="fecInicio" value="{{$fecInicio}}">
-                      <label for="fecFinal">Fecha de Inicio</label>
+                        <input type="date" name="fecInicio" value="{{$fecInicio}}">
+                      <label for="fecFinal">Fecha Fin</label>
                       <input type="date" name="fecFinal" value="{{$fecFinal}}">
+
+                      <label for="pais">Jornada</label>
+        <select name="jornada" value="{{$jornada}}">
+                                <option value="0">Ingreso 8hrs</option>
+                                <option value="1">Ingreso 13hrs</option>
+                                <option value="2">Ingreso 14hrs</option>                                
+                            </select>
+                      
                       <button type="submit">Enviar</button>
+                                 
         </form>
     </div>    
  </div>
@@ -33,14 +42,18 @@
                     <?php  
                     $cifun = $info->ci;
                     ?>
-                    @foreach ($info->fechas($fecInicio, $fecFinal) as $fecha)
+                    @foreach ($info->fechas($fecInicio, $fecFinal, $jornada) as $fecha)
                     <?php 
                        $cifun2 = $fecha->ci 
                        ?>
                        @if($cifun=$cifun2) 
+                            @php
+                                $novedad = Carbon\Carbon::parse($fecha->fecha);
+                                $fechaAtraso=$novedad->toTimeString();
+                            @endphp
                             <th>{{$cifun}}</th>
                             <th>{{$fecha->nombre}}</th>
-                            <th>{{Carbon\Carbon::parse($fecha->fecha)}}</th>
+                            <th>{{$fechaAtraso}}</th>
                             <th>
                                 {{-- <a href="#"><button class="btn btn-primary" disabled data-toggle="modal" data-target="#fm-modal">Detalles</button></a> --}}
                                 <a href="{{ route('notificar',

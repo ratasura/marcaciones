@@ -13,13 +13,44 @@ class Funcionario extends Model
     public $timestamps = false;
 
 
-    public function fechas($fecInicio, $fecFinal)
+    public function fechas($fecInicio, $fecFinal, $jornada)
     {
-        $fMarcaciones = Marcacion::where('ci','=',$this->ci)
-        ->where('fecha','>=',$fecInicio.' 08:01:00')->where('fecha','<=',$fecFinal.' 11:59:59')
-        ->select('marcaciones.fecha','marcaciones.id','marcaciones.ci','marcaciones.nombre')->get();
-        //dd($fMarcaciones);
-        return $fMarcaciones;
+        if ($jornada == '0'){
+                $fMarcaciones = Marcacion::where('ci','=',$this->ci)
+                ->where('fecha','>=',$fecInicio.' 08:01:00')->where('fecha','<=',$fecFinal.' 11:59:59')
+                ->select('marcaciones.fecha','marcaciones.id','marcaciones.ci','marcaciones.nombre')->get();
+                //dd($fMarcaciones);
+                return $fMarcaciones;
+                }
+                if ($jornada == '1'){
+                    $fMarcaciones = Marcacion::where('ci','=',$this->ci)
+                    ->where('fecha','>=',$fecInicio.' 12:00:00')->where('fecha','<=',$fecFinal.' 13:59:59')
+                    ->select('marcaciones.fecha','marcaciones.id','marcaciones.ci','marcaciones.nombre')->get();
+                    //dd($fMarcaciones);
+                    return $fMarcaciones;
+                }
+            
+                if ($jornada == '2'){
+                        $fMarcaciones = Marcacion::where('ci','=',$this->ci)
+                        ->where('fecha','>=',$fecInicio.' 13:00:00')->where('fecha','<=',$fecFinal.' 15:59:59')
+                        ->select('marcaciones.fecha','marcaciones.id','marcaciones.ci','marcaciones.nombre')->get();
+                        //dd($fMarcaciones);
+                        return $fMarcaciones;
+                }
     }
 
 }
+
+
+// public function fechas($fecInicio, $fecFinal)
+// {
+//     $fMarcaciones = Marcacion::where('ci','=',$this->ci)
+//     ->where('fecha','>=',$fecInicio.' 08:01:00')->where('fecha','<=',$fecFinal.' 11:59:59')
+//     ->select('marcaciones.fecha','marcaciones.id','marcaciones.ci','marcaciones.nombre')->get();
+//     //dd($fMarcaciones);
+//     return $fMarcaciones;
+// }
+
+
+
+//
