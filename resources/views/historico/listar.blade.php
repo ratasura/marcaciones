@@ -39,6 +39,8 @@
             <tbody>
                 @foreach($funcionarios  as $info)
                 <tr>
+                <th>{{$info['ci']}}</th>
+                <th>{{$info['nombre']}}</th>
                     <?php  
                     $cifun = $info->ci;
                     ?>
@@ -51,8 +53,8 @@
                                 $novedad = Carbon\Carbon::parse($fecha->fecha);
                                 $fechaAtraso=$novedad->toTimeString();
                             @endphp
-                            <th>{{$cifun}}</th>
-                            <th>{{$fecha->nombre}}</th>
+                            {{-- <th>{{$cifun}}</th>
+                            <th>{{$fecha->nombre}}</th> --}}
                             <th>{{$fechaAtraso}}</th>
                             <th>
                                 {{-- <a href="#"><button class="btn btn-primary" disabled data-toggle="modal" data-target="#fm-modal">Detalles</button></a> --}}
