@@ -38,36 +38,35 @@
             </thead>
             <tbody>
                 @foreach($funcionarios  as $info)
-                <tr>
-                <th>{{$info['ci']}}</th>
-                <th>{{$info['nombre']}}</th>
+                    <tr>
+                        
                     <?php  
-                    $cifun = $info->ci;
-                    ?>
-                    @foreach ($info->fechas($fecInicio, $fecFinal, $jornada) as $fecha)
-                    <?php 
-                       $cifun2 = $fecha->ci 
-                       ?>
-                       @if($cifun=$cifun2) 
-                            @php
-                                $novedad = Carbon\Carbon::parse($fecha->fecha);
-                                $fechaAtraso=$novedad->toTimeString();
-                            @endphp
-                            {{-- <th>{{$cifun}}</th>
-                            <th>{{$fecha->nombre}}</th> --}}
-                            <th>{{$fechaAtraso}}</th>
-                            <th>
-                                {{-- <a href="#"><button class="btn btn-primary" disabled data-toggle="modal" data-target="#fm-modal">Detalles</button></a> --}}
-                                <a href="{{ route('notificar',
-                                  ['id'=> $info->id,'fecha'=>$fecha->fecha])}} "
-                                    class="btn btn-danger btn-sm">Notificar</a>
-                                
-                            </th> 
-                       @endif
-                       
-                    @endforeach
-                    
-                </tr>
+                        $cifun = $info->ci;
+                        ?>
+                        @foreach ($info->fechas($fecInicio, $fecFinal, $jornada) as $fecha)
+                            <?php 
+                                $cifun2 = $fecha->ci 
+                            ?>
+                           
+                        @if($cifun=$cifun2) 
+                                        @php
+                                        $novedad = Carbon\Carbon::parse($fecha->fecha);
+                                        $fechaAtraso=$novedad->toTimeString();
+                                        @endphp
+                                <th class="cedula">{{$cifun}}</th>
+                                <th class="nombre">{{$fecha->nombre}}</th>
+                                <th>{{$fechaAtraso}}</th>
+                                <th>
+                                    {{-- <a href="#"><button class="btn btn-primary" disabled data-toggle="modal" data-target="#fm-modal">Detalles</button></a> --}}
+                                        <a href="{{ route('notificar',
+                                        ['id'=> $info->id,'fecha'=>$fecha->fecha])}} " 
+                                        class="btn btn-danger btn-sm">Notificar</a>                                
+                                </th>  
+                            @endif
+                
+                        @endforeach  
+                        
+                    </tr>
                 @endforeach
                 {{-- @if (session('status'))
                        <h2>{{ session('status') }}</h2>
@@ -77,4 +76,28 @@
     </div>
     {{$funcionarios->links()}}
  </div>
+
+<!-- para usa jscript ('scripst esta definida en admin.blade al final') -->
+    @push('scripts') 
+
+            <script>
+                $(document).ready(function(){
+                            duplicados();
+                        });
+
+             function duplicados ()
+            {
+                var nombres = document.getElementsByClassName("nombre");
+               var nombres_array = [];
+               var total = 0;
+               for(i=0; i<nombres.length; i++){
+                   nombres_array.push(nombres[i].value);
+               }
+                console.log(nombres_array);
+            }
+            </script>
+        
+    @endpush 
+
+ 
 @endsection
