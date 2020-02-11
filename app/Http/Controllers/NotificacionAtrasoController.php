@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Funcionario;
+use App\Historico;
+use App\Http\Requests\historicoFormRequest;
 use App\Mail\NotificacionAtraso;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -17,8 +19,10 @@ class NotificacionAtrasoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id, $fecha)
+    public function index( $id, $fecha)
     {
+        
+
         $funcionario = Funcionario::findOrFail($id);
         $mail = $funcionario->mail;
         $ci = $funcionario->ci;
@@ -26,7 +30,13 @@ class NotificacionAtrasoController extends Controller
         $mail = trim($mail);
         //dd($id,$ci,$nombre,$fecha);
         Mail::to($mail)->send(new NotificacionAtraso);
-        return back();
+        $historico = new Historico();
+        $historico->id_funcionario=$id;
+        $historico->ci=$ci;
+        $historico->nombre= $nombre;
+        $historico->fechaincidente=$fecha;
+        $historico->save();
+        return back()->with('status', 'Funcionario notificado y atraso registrado...');
         
     }
 

@@ -8,7 +8,10 @@ class Historico extends Model
 {
     protected $table 		= 'historicos';
     protected $primarykey	= 'id'; 
-    protected $fillable 	= ['id_funcionario', 'ci','nombre','fecha','entradaini','salidaini','entradafin','salidafin'];
+    protected $fillable 	= ['id_funcionario', 'ci','nombre','fecha','fechaincidente'];
 
     public $timestamps = false;
+
+
+   
 }

@@ -24,7 +24,7 @@ class Funcionario extends Model
                 }
         if ($jornada == '1'){
             $horaInicio ='12:00:00';
-            $horaFin ='15:00:00';
+            $horaFin ='13:00:00';
             $fMarcaciones = Marcacion::where('ci','=',$this->ci)
             ->whereDate('fecha',$fecInicio)
             ->whereTime('fecha','>=',$horaInicio)
@@ -42,6 +42,8 @@ class Funcionario extends Model
                         return $fMarcaciones;
                 }
     }
+
+    
 
 }
 

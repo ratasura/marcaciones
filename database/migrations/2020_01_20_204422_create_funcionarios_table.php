@@ -15,9 +15,9 @@ class CreateFuncionariosTable extends Migration
     {
         Schema::create('funcionarios', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('ci',10);
             $table->string('nombre');
             $table->string('mail');
+            $table->string('ci',10);
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_spanish_ci';
         });
