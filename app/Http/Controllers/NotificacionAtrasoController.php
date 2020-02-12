@@ -9,6 +9,8 @@ use App\Mail\NotificacionAtraso;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
+
+
 class NotificacionAtrasoController extends Controller
 {
     public function __construct(){
@@ -28,15 +30,19 @@ class NotificacionAtrasoController extends Controller
         $ci = $funcionario->ci;
         $nombre = $funcionario->nombre;
         $mail = trim($mail);
-        //dd($id,$ci,$nombre,$fecha);
-        Mail::to($mail)->send(new NotificacionAtraso);
+        //$num  = strlen($fecha);
+        $minutosatraso = intval(substr($fecha, 14,2)) ; 
+        //$type = gettype($rest);
+        //dd($id,$ci,$nombre,$fecha,$minutosatraso);
+        //Mail::to($mail)->send(new NotificacionAtraso);
         $historico = new Historico();
         $historico->id_funcionario=$id;
         $historico->ci=$ci;
         $historico->nombre= $nombre;
         $historico->fechaincidente=$fecha;
+        $historico->minutosatraso=$minutosatraso;
         $historico->save();
-        return back()->with('status', 'Funcionario notificado y atraso registrado...');
+        return back();
         
     }
 

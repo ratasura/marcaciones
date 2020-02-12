@@ -24,7 +24,7 @@ class Funcionario extends Model
                 }
         if ($jornada == '1'){
             $horaInicio ='12:00:00';
-            $horaFin ='13:00:00';
+            $horaFin ='15:00:00';
             $fMarcaciones = Marcacion::where('ci','=',$this->ci)
             ->whereDate('fecha',$fecInicio)
             ->whereTime('fecha','>=',$horaInicio)
@@ -34,13 +34,13 @@ class Funcionario extends Model
 
                 }
             
-                if ($jornada == '2'){
-                        $fMarcaciones = Marcacion::where('ci','=',$this->ci)
-                        ->where('fecha','>=',$fecInicio.' 13:00:00')->where('fecha','<=',$fecFinal.' 15:59:59')
-                        ->select('marcaciones.fecha','marcaciones.id','marcaciones.ci','marcaciones.nombre')->get();
-                        //dd($fMarcaciones);
-                        return $fMarcaciones;
-                }
+                // if ($jornada == '2'){
+                //         $fMarcaciones = Marcacion::where('ci','=',$this->ci)
+                //         ->where('fecha','>=',$fecInicio.' 13:00:00')->where('fecha','<=',$fecFinal.' 15:59:59')
+                //         ->select('marcaciones.fecha','marcaciones.id','marcaciones.ci','marcaciones.nombre')->get();
+                //         //dd($fMarcaciones);
+                //         return $fMarcaciones;
+                // }
     }
 
     

@@ -27,10 +27,10 @@
                       <input type="date" name="fecFinal" value="{{$fecFinal}}">
 
                       <label for="pais">Jornada</label>
-        <select name="jornada" value="{{$jornada}}">
-                                <option value="0">Ingreso 8hrs</option>
-                                <option value="1">Ingreso 13hrs</option>
-                                <option value="2">Ingreso 14hrs</option>                                
+                            <select name="jornada" value="{{$jornada}}">
+                                <option value="0">AM</option>
+                                <option value="1">PM</option>
+                                {{-- <option value="2">Ingreso 14hrs</option>                                 --}}
                             </select>
                       
                       <button type="submit">Enviar</button>

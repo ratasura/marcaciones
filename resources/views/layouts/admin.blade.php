@@ -124,7 +124,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="{{url('historico')}}"><i class="fa fa-circle-o"></i> Marcaciones por usuario</a></li>
-                {{-- <li><a href="{{url('ventas/cliente')}}"><i class="fa fa-circle-o"></i> Clientes</a></li> --}}
+                <li><a href="{{url('atrasos')}}"><i class="fa fa-circle-o"></i> Atrasos</a></li> 
 
               </ul>
             </li>

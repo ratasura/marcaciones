@@ -10,13 +10,13 @@ use Illuminate\Support\Facades\DB;
 class HistoricoController extends Controller
 {
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
-      }
-
-    public function index(Request $request){
+    }
+    public function index(Request $request)
+    {
         $funcionarios = Funcionario::paginate(50);
-
         if(isset($request->fecInicio) && isset($request->fecFinal))
         {
             $fecInicio = $request->fecInicio;
@@ -35,7 +35,6 @@ class HistoricoController extends Controller
        // dd($request->all());
         return view('historico.listar',compact('funcionarios','fecInicio','fecFinal','jornada'));
     }
-
     public function indexbusqueda(Request $request)
     {
         $funcionarios = Funcionario::paginate(50);
@@ -59,6 +58,9 @@ class HistoricoController extends Controller
         return view('historico.listar',compact('funcionarios','fecInicio','fecFinal','jornada'));
 
     }
+
+    
+
 
    
 }
