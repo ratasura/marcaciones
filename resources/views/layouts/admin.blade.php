@@ -132,7 +132,7 @@
 
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-folder"></i> <span>Acceso</span>
+                <i class="fa fa-user"></i> <span>Acceso</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
@@ -140,19 +140,17 @@
 
               </ul>
             </li>
-             <li>
+            <li class="treeview">
               <a href="#">
-                <i class="fa fa-plus-square"></i> <span>Ayuda</span>
-                <small class="label pull-right bg-red">PDF</small>
+                <i class="fa fa-file"></i> <span>Reportes</span>
+                <i class="fa fa-angle-left pull-right"></i>
               </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa fa-info-circle"></i> <span>Acerca De...</span>
-                <small class="label pull-right bg-yellow">IT</small>
-              </a>
-            </li>
+              <ul class="treeview-menu">
+                <li><a href="{{url('reportes')}}"><i class="fa fa-circle-o"></i>Total de atrasos en minutos</a></li>
 
+              </ul>
+            </li>
+            
           </ul>
         </section>
         <!-- /.sidebar -->

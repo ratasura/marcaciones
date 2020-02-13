@@ -16,29 +16,35 @@ class historicoAtrasoController extends Controller
      */
     public function index(Request $request)
     {
-        if(isset($request->fecInicio) && isset($request->fecFinal) && isset($request->ci)){
+        if(isset($request->fecInicio) && isset($request->fecFinal) && isset($request->nombre)){
             $fecInicio = $request->fecInicio;
             $fecFinal = $request->fecFinal;
-            $ci = $request->ci;
+            $nombre = $request->nombre;
             $atrasos =  DB::table('historicos')
-            ->where('ci','LIKE','%'.$ci.'%')
-            ->orWhere('nombre','LIKE','%'.$ci.'%')
-            ->paginate(3);
-            //dd($atrasos->all());
-            $atrasos = $atrasos->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal, 'ci'=>$ci]);
-            return view ('historico.atrasos.index', compact('atrasos','fecInicio','fecFinal','ci'));
+            ->where('nombre','LIKE','%'.$request->nombre.'%')
+            ->whereDate('fechaincidente','>=',$fecInicio)
+            ->whereDate('fechaincidente','<=',$fecFinal)
+            ->paginate(5);
+            $atrasos = $atrasos->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal, 'nombre'=>$nombre]);
+             //dd($atrasos);
+             return view ('historico.atrasos.index', compact('atrasos','fecInicio','fecFinal','nombre'));
 
         }
         else{
             
-            $atrasos = DB::table('historicos')->paginate(3);
-            $fecInicio= date('Y-m-d');
-            $fecFinal= date('Y-m-d');
-            $ci = '';
-            //$atrasos = $atrasos->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal, 'ci'=>$ci]);
-            return view ('historico.atrasos.index', compact('atrasos','fecInicio','fecFinal','ci'));
+            $fecInicio = date('Y-m-d');
+            $fecFinal = date('Y-m-d');
+            $nombre = "admin";
+            $atrasos =  DB::table('historicos')
+            ->where('nombre','LIKE','%'.$nombre.'%')
+            ->whereDate('fechaincidente','>=',$fecInicio)
+            ->whereDate('fechaincidente','<=',$fecFinal)
+            ->paginate(5);
+            $atrasos = $atrasos->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal, 'nombre'=>$nombre]);
+             //dd($atrasos);
+             return view ('historico.atrasos.index', compact('atrasos','fecInicio','fecFinal','nombre'));
         }
-        //return view ('historico.atrasos.index', compact('atrasos'));
+       
     }
 
    

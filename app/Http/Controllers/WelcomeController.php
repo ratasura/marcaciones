@@ -12,19 +12,8 @@ class WelcomeController extends Controller
         $this->middleware('auth');
       }
     
-      public function index(Request $request){
+      public function index(){
        
-        $mes = $request->mes;
-       
-        $atrasos = DB::table('funcionarios')
-        ->join('historicos','funcionarios.ci','=','historicos.ci')
-        ->select('historicos.nombre',DB::raw('SUM(minutosatraso) as total'))
-        ->whereMonth('historicos.fechaincidente','=',$mes)
-        ->groupBy('historicos.nombre')
-        ->orderBy('total','desc')
-        ->paginate(10);
-        //dd($atrasos);
-
-       return view('welcome' , compact('atrasos'));
+        return view('welcome');
      }
 }

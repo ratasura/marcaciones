@@ -36,3 +36,7 @@ Route::get('notificar/{id}/{fecha}', 'NotificacionAtrasoController@index')->name
 
 // manejo de atrasos en la tabla historicos
 Route::resource('atrasos','historicoAtrasoController')->except(['create']);
+
+// reportes 
+Route::resource('reportes', 'ReportesController');
+

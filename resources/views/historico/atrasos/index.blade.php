@@ -2,19 +2,19 @@
 
 @section ('contenido')
 <p>Listado de atrasos </p>
+<p>Llenar los tres campos para que el filtro funcione</p>
 
 <div class="row">
     <div class="col-lg-12">
         <form action="{{url('atrasos')}}" name="form-general" class="form-horizontal" method="get">
                       @csrf
-                      <label for="fecInicio">Fecha de Inicio</label>
+                    <label for="fecInicio">Fecha de Inicio</label>
                     <input type="date" name="fecInicio" value="{{$fecInicio}}" >
-                      <label for="fecFinal">Fecha Fin</label>
+                    <label for="fecFinal">Fecha Fin</label>
                     <input type="date" name="fecFinal"  value="{{$fecFinal}}">
-
-                      <label for="ci">cédula</label>
-                    <input type="text" name="ci" value="{{$ci}}">   
-                      <button type="submit">Enviar</button>
+                    <label for="ci">cédula</label>
+                    <input type="text" name="nombre" value="{{$nombre}}">   
+                    <button type="submit">Enviar</button>
                                  
         </form>
     </div>    
