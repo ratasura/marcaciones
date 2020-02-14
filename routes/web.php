@@ -22,8 +22,9 @@ Route::post('logout','Auth\LoginController@logout')->name('logout');
 Route::get('cargar','MarcacionesController@cargaview')->name('cargar');
 Route::post('cargar','MarcacionesController@importar')->name('subir');
 Route::get('listar','MarcacionesController@listar')->name('listar');
+Route::post('listar','MarcacionesController@listarmarcaciones')->name('listarmarcaciones');
 // ****************************************************************************
-// crud de usuarios
+// crud de FUNCIONARIOS
 Route::resource('funcionarios','FuncionarioController');
 //*************************************************************************** */
 // rutas del historico (marcaciones por usuario)
@@ -39,4 +40,6 @@ Route::resource('atrasos','historicoAtrasoController')->except(['create']);
 
 // reportes 
 Route::resource('reportes', 'ReportesController');
+
+
 

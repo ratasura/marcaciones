@@ -1,8 +1,8 @@
 @extends ('layouts.admin')
 
 @section ('contenido')
-<p>Listado de atrasos </p>
-<p>Llenar los tres campos para que el filtro funcione</p>
+<p class="h1">Atrasos Registrados</p>
+@include('layouts.advertencia')
 
 <div class="row">
     <div class="col-lg-12">
@@ -12,7 +12,7 @@
                     <input type="date" name="fecInicio" value="{{$fecInicio}}" >
                     <label for="fecFinal">Fecha Fin</label>
                     <input type="date" name="fecFinal"  value="{{$fecFinal}}">
-                    <label for="ci">cédula</label>
+                    <label for="ci">Nombre</label>
                     <input type="text" name="nombre" value="{{$nombre}}">   
                     <button type="submit">Enviar</button>
                                  

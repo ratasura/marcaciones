@@ -1,13 +1,14 @@
 @extends ('layouts.admin')
 
 @section ('contenido')
-
+@include('layouts.advertencia')
 <div class="container">
+    
     <div class="row">
         <div class="col-lg-12">
             <form action="{{url('reportes')}}" name="form-general" class="form-horizontal" method="get" >
                 @csrf
-                <h1>Ingrese un mes</h1>
+                
                 <select name="mes" id="mes" >
                 <option value="{{$mes}}" selected disabled hidden>{{$mes}}</option>
                     <option value="1">Enero</option>
@@ -26,48 +27,39 @@
                  <button type="submit">Enviar</button>
             </form>
          </div>  
+         <br>
+         <br>
+         <br>
+         <div class="col-lg-12">
+            <table class="table table-bordered table-dark table-responsive-lg">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Total minutos</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($atrasos as $item)
+                    
+                    <tr class="table-dark">
+                        <td>{{$item->nombre}}</td>
+                        <td>{{$item->total}}</td>
+                        
+                    </tr>
+                    @endforeach
+                   
+                                        
+                </tbody>
+            </table>
+            {{$atrasos->links()}}
+         </div>
          
-         <div class="col">
-            <div class="jumbotron ">
-                {{-- <h1 class="display-3 mb-3">Estadísticas</h1>                    --}}
-                <p class="lead mb-4">                         
-                   <table table class="table table-bordered table-hover bg-dark text-white table-responsive-lg"">
-                       <thead >
-                           <tr>
-                               <th>Nombre</th>
-                               <th>Total de atrasos en minutos</th>
-                           </tr>
-                       </thead>
-                       <tbody>
-                           @foreach ($atrasos as $item)
-                           <tr>
-                               <td>{{$item->nombre}}</td>
-                               <td>{{$item->total}}</td>
-                               
-                           </tr>
-                           @endforeach
-                                            
-                       </tbody>                            
-                   </table>
-                   {{$atrasos->links()}}
-               
-               </p>
-                <div>
-                    <a href="{{URL::action('ReportesController@create')}}"  onclick="seleccionado()" class="btn btn-sm btn-primary">
-                        Descargar productos en PDF
-                    </a>
-                    {{-- <a href="{{ route('notificar',
-                                        ['id'=> $info->id,'fecha'=>$fecha->fecha])}} " 
-                                        class="btn btn-danger btn-sm">Notificar</a>   --}}
-                    {{-- <a href="#" class="btn btn-primary btn-lg">Leer mas</a>
-                    <a href="#" class="btn btn-success btn-lg">Ver</a> --}}
-                </div>
-            </div>
-        </div>
+      
     </div>    
 </div>
 
-@push('scripts')
+{{-- @push('scripts')
 
 <script>
     // $(document).ready(function () {
@@ -80,7 +72,7 @@
     }
 </script>
     
-@endpush
+@endpush --}}
 
 
 @endsection

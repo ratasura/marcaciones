@@ -1,9 +1,23 @@
 @extends ('layouts.admin')
 
 @section ('contenido')
-<p>Listado de marcaciones</p>
+@include('layouts.advertencia')
 <div class="container">
     <div class="row">
+        <div class="col-lg-12">
+            <form action="{{route('listarmarcaciones')}}" name="form-general" class="form-horizontal" method="POST">
+                          @csrf
+                          <label for="fecInicio">Fecha de Inicio</label>
+            <input type="date" name="fecInicio" value="{{$fecInicio}}">
+                          <label for="fecFinal">Fecha Fin</label>
+                          <input type="date" name="fecFinal" value="{{$fecFinal}}">
+    
+                          <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" value="{{$nombre}}">   
+                          <button type="submit">Enviar</button>
+                                     
+            </form>
+        </div>  
         <div class="col">
             <table class="table table-bordered table-hover  table-responsive-lg">
                 <thead>

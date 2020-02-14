@@ -99,7 +99,7 @@
               <ul class="treeview-menu">
                {{-- <li><a href="{{url('/')}}"><i class="fa fa-circle-o"></i> Inicio</a></li> --}}
                 <li><a href="{{url('cargar')}}"><i class="fa fa-circle-o"></i> Cargar archivo</a></li>
-                <li><a href="{{url('listar')}}"><i class="fa fa-circle-o"></i> Listar Marcaciones</a></li> --}}
+                
               </ul>
             </li>
 
@@ -119,16 +119,28 @@
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-clock-o"></i>
-                <span>Históricos</span>
+                <span>Atrasos</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{url('historico')}}"><i class="fa fa-circle-o"></i> Marcaciones por usuario</a></li>
-                <li><a href="{{url('atrasos')}}"><i class="fa fa-circle-o"></i> Atrasos</a></li> 
+                <li><a href="{{url('historico')}}"><i class="fa fa-circle-o"></i> Notificar</a></li>
+                <li><a href="{{url('atrasos')}}"><i class="fa fa-circle-o"></i> Ver</a></li> 
 
               </ul>
             </li>
 
+
+          
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-file"></i> <span>Reportes</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{url('reportes')}}"><i class="fa fa-circle-o"></i>Funcionarios más atrasados</a></li>
+                <li><a href="{{url('listar')}}"><i class="fa fa-circle-o"></i>Funcionarios Marcaciones</a></li> --}}
+              </ul>
+            </li>
 
             <li class="treeview">
               <a href="#">
@@ -137,16 +149,6 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="{{url('seguridad/usuario')}}"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-file"></i> <span>Reportes</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="{{url('reportes')}}"><i class="fa fa-circle-o"></i>Total de atrasos en minutos</a></li>
 
               </ul>
             </li>
@@ -171,7 +173,7 @@
             <div class="col-md-12">
               <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Sistema de Marcaciones</h3>
+                  
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 

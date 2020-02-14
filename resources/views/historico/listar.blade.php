@@ -1,22 +1,9 @@
 @extends ('layouts.admin')
 
 @section ('contenido')
-    @if (count($errors)>0)
-    <div class="alert alert-danger"> 
-        <ul>
-            @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
-
-    @if (session('status'))
-        <div class="alert alert-success" role="alert">
-            {{session('status')}}
-        </div>
-    @endif
-<p>Listado de novedades </p>
+<p class="h1">Notificar Atrasos </p>
+@include('layouts.advertencia')
+<p></p>
 <div class="row">
     <div class="col-lg-12">
         <form action="{{route('historico')}}" name="form-general" class="form-horizontal" method="POST">
