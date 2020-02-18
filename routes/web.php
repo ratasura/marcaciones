@@ -41,5 +41,7 @@ Route::resource('atrasos','historicoAtrasoController')->except(['create']);
 // reportes 
 Route::resource('reportes', 'ReportesController');
 
+Route::get('total-minutos-pdf/{id}','ReportesController@totalMinutosPdf')->name('totalminutos.pdf');
+
 
 

@@ -24,16 +24,18 @@ class HistoricoController extends Controller
             $jornada = $request->jornada;
             //dd($request->all());
            $funcionarios = $funcionarios->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal, 'jornada'=>$jornada]); 
+           return view('historico.listar',compact('funcionarios','fecInicio','fecFinal','jornada'));
         }
         else{
             $fecInicio= date('Y-m-d');
             $fecFinal= date('Y-m-d');
             $jornada = '0';
             $funcionarios = $funcionarios->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal, 'jornada'=>$jornada]); 
+            return view('historico.listar',compact('funcionarios','fecInicio','fecFinal','jornada'));
         }
         
        // dd($request->all());
-        return view('historico.listar',compact('funcionarios','fecInicio','fecFinal','jornada'));
+        //return view('historico.listar',compact('funcionarios','fecInicio','fecFinal','jornada'));
     }
     public function indexbusqueda(Request $request)
     {
@@ -46,16 +48,18 @@ class HistoricoController extends Controller
             $jornada = $request->jornada;
             //dd($request->all());
            $funcionarios = $funcionarios->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal, 'jornada'=>$jornada]); 
+           return view('historico.listar',compact('funcionarios','fecInicio','fecFinal','jornada'));
         }
         else{
             $fecInicio= date('Y-m-d');
             $fecFinal= date('Y-m-d');
             $jornada = '0';
             $funcionarios = $funcionarios->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal, 'jornada'=>$jornada]); 
+            return view('historico.listar',compact('funcionarios','fecInicio','fecFinal','jornada'));
         }
         
        // dd($request->all());
-        return view('historico.listar',compact('funcionarios','fecInicio','fecFinal','jornada'));
+        //return view('historico.listar',compact('funcionarios','fecInicio','fecFinal','jornada'));
 
     }
 

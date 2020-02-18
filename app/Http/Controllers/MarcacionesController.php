@@ -34,52 +34,54 @@ class MarcacionesController extends Controller
     {
         $fecInicio = date('Y-m-d');
         $fecFinal = date('Y-m-d');
-        $nombre = "admin";
+        $ci = "Ingrese CI";
         $marcaciones =  DB::table('marcaciones')
-            ->where('nombre','LIKE','%'.$nombre.'%')
+            ->where('ci','LIKE','%'.$ci.'%')
             ->whereDate('fecha','>=',$fecInicio)
             ->whereDate('fecha','<=',$fecFinal)
             ->orderBy('fecha','asc')
             ->paginate(10);
-            $marcaciones = $marcaciones->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal, 'nombre'=>$nombre]);
+            $marcaciones = $marcaciones->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal, 'ci'=>$ci]);
              //dd($marcaciones);
-             return view ('reportes.listar', compact('marcaciones','fecInicio','fecFinal','nombre'));
+             return view ('reportes.listar', compact('marcaciones','fecInicio','fecFinal','ci'));
     }
 
     public function listarmarcaciones(Request $request)
     {
         
-        if(isset($request->fecInicio) && isset($request->fecFinal) && isset($request->nombre)){
+        if(isset($request->fecInicio) && isset($request->fecFinal) && isset($request->ci)){
+
+            //dd($request->all());
             $fecInicio = $request->fecInicio;
             $fecFinal = $request->fecFinal;
-            $nombre = $request->nombre ;            
-            $nombre_may = strtoupper($nombre);
+            $ci = $request->ci ;            
+            //$nombre_may = strtoupper($nombre);
             $marcaciones =  DB::table('marcaciones')
-            ->where('nombre','LIKE','%'.$nombre_may.'%')
+            ->where('ci','LIKE','%'.$ci.'%')
             ->whereDate('fecha','>=',$fecInicio)
             ->whereDate('fecha','<=',$fecFinal)
             ->orderBy('fecha','asc')
             ->paginate(10);
             //dd($marcaciones);
-            $marcaciones = $marcaciones->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal, 'nombre'=>$nombre]);
+            $marcaciones = $marcaciones->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal, 'ci'=>$ci]);
              //dd($atrasos);
-             return view ('reportes.listar', compact('marcaciones','fecInicio','fecFinal','nombre'));
+             return view ('reportes.listar', compact('marcaciones','fecInicio','fecFinal','ci'));
         }
 
         else{
             
             $fecInicio = date('Y-m-d');
             $fecFinal = date('Y-m-d');
-            $nombre = "admin";
+            $ci = "000";
             $marcaciones =  DB::table('marcaciones')
-            ->where('nombre','LIKE','%'.$nombre.'%')
+            ->where('ci','LIKE','%'.$ci.'%')
             ->whereDate('fecha','>=',$fecInicio)
             ->whereDate('fecha','<=',$fecFinal)
             ->orderBy('fecha','asc')
             ->paginate(10);
-            $marcaciones = $marcaciones->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal, 'nombre'=>$nombre]);
+            $marcaciones = $marcaciones->appends(['fecInicio'=>$fecInicio, 'fecFinal'=>$fecFinal, 'ci'=>$ci]);
              //dd($marcaciones);
-             return view ('reportes.listar', compact('marcaciones','fecInicio','fecFinal','nombre'));
+             return view ('reportes.listar', compact('marcaciones','fecInicio','fecFinal','ci'));
         }
         
     }

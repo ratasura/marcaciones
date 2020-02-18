@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Historico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
@@ -9,6 +10,8 @@ use Barryvdh\DomPDF\Facade as PDF;
 
 class ReportesController extends Controller
 {
+
+   
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +29,9 @@ class ReportesController extends Controller
             ->orderBy('total','desc')
             ->paginate(10);
             //dd($atrasos);
-            $atrasos = $atrasos->appends(['mes'=>$mes]);            
+            
+            $atrasos = $atrasos->appends(['mes'=>$mes]);      
+            return view('reportes.minutospormes' , compact('atrasos','mes'));      
         
         }
         else{
@@ -39,35 +44,26 @@ class ReportesController extends Controller
             ->orderBy('total','desc')
             ->paginate(10);
             //dd($atrasos);
-            $atrasos = $atrasos->appends(['mes'=>$mes]);   
             
-        }
-
-
-        return view('reportes.minutospormes' , compact('atrasos','mes'));
-       
-       
-       
-        
+            $atrasos = $atrasos->appends(['mes'=>$mes]);   
+            return view('reportes.minutospormes' , compact('atrasos','mes'));
+            
+        }       
      }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-     public function pdf (Request $request){
-        $mes = $request->mes;
+    
+
+     public function totalMinutosPdf($mes){
+        //dd($mes);
         $atrasos = DB::table('funcionarios')
         ->join('historicos','funcionarios.ci','=','historicos.ci')
         ->select('historicos.nombre',DB::raw('SUM(minutosatraso) as total'))
         ->whereMonth('historicos.fechaincidente','=',$mes)
         ->groupBy('historicos.nombre')
         ->orderBy('total','desc')
-        ->paginate(10);
-
-        return $request;
-
+        ->paginate(50);
+         $pdf = PDF::loadView('pdf.vista_total_minutos', compact('atrasos','mes'));        
+        return $pdf->download('listado.pdf');
 
 
      }
@@ -75,16 +71,7 @@ class ReportesController extends Controller
 
     public function create(Request $request)
     {
-        // $pdf = App::make('dompdf.wrapper');
-        //  $pdf->loadHTML('<h1>Test</h1>');
-        // $pdf = PDF::loadHTML('<h1>Test</h1>');
-        // $pdf = PDF::loadview('welcome');
-
-        dd($request->all());
-        $pdf = App::make('dompdf.wrapper');
-        $pdf -> loadview('welcome');
-        return $pdf->download();
-        //return $pdf->stream();
+       
     }
 
     /**
