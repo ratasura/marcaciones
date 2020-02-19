@@ -138,7 +138,8 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="{{url('reportes')}}"><i class="fa fa-circle-o"></i>Funcionarios más atrasados</a></li>
-                <li><a href="{{url('listar')}}"><i class="fa fa-circle-o"></i>Funcionarios Marcaciones</a></li> --}}
+                <li><a href="{{url('listar')}}"><i class="fa fa-circle-o"></i>Marcaciones por funcionarios</a></li> 
+                <li><a href="{{url('totalatrasospdf')}}"><i class="fa fa-circle-o"></i>Total de atrasos</a></li> 
               </ul>
             </li>
 

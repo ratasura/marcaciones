@@ -18,6 +18,9 @@
                           <button type="submit">Enviar</button>
                                      
             </form>
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                <a href="{{ action('ReportesController@marcacionesFuncionariosPdf', ['fecInicio'=>$fecInicio,'fecFinal'=>$fecFinal,'ci'=>$ci]) }}">    <button class=" btn btn-danger fa fa-file-pdf-o">     Reporte en PDF</button></a>
+            </div>
         </div>  
         <div class="col">
             <table class="table table-bordered table-hover  table-responsive-lg">

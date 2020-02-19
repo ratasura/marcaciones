@@ -40,8 +40,13 @@ Route::resource('atrasos','historicoAtrasoController')->except(['create']);
 
 // reportes 
 Route::resource('reportes', 'ReportesController');
-
 Route::get('total-minutos-pdf/{id}','ReportesController@totalMinutosPdf')->name('totalminutos.pdf');
+Route::get('marcaciones-funcionarios-pdf/{fecInicio}/{fecFinal}/{ci}','ReportesController@marcacionesFuncionariosPdf')->name('maracacionesFuncionarios.pdf');
+Route::get('totalatrasospdf','ReportesController@totalAtrasosPdf')->name('totalatrasospdf');
+Route::get('totalatrasos','ReportesController@totalatrasos');
+
+// Route::get('totalatrasospdf','ReportesController@totalAtrasosPdf')->name('totalatrasos');
+// Route::get('total-atrasos-pdf/{fecInicio}/{fecFinal}/{nombre}','ReportesController@totalAtrasosPdf')->name('totalAtrasos');
 
 
 
