@@ -1,7 +1,7 @@
 @extends ('layouts.admin')
 
 @section ('contenido')
-<p class="h1">Atrasos Registrados</p>
+<p class="h3"> Total del atrasos por funcionario </p>
 @include('layouts.advertencia')
 
 <div class="row">

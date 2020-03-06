@@ -12,7 +12,7 @@
                     @csrf
                     <input type="file" name="import_file" class="form-control" accept=".csv">
                     <input class="btn btn-primary" type="submit" value="Cargar archivo">
-                  </form>
+                </form>
                   @if (session('status'))
                   <h2>{{ session('status') }}</h2>
                 @endif

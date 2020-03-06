@@ -63,6 +63,42 @@ class HistoricoController extends Controller
 
     }
 
+    public function sinmarcaciones(Request $request){
+
+        if(isset($request->fecha)){
+
+            $fecha  = $request->fecha;
+            $funcionarios = DB::table('funcionarios')->whereNotIn('ci', function($q) use ($fecha) {
+                $q->select('ci')->from('marcaciones')->whereDate('fecha','=',$fecha);
+            })->paginate(10);
+            $funcionarios = $funcionarios->appends(['fecha'=>$fecha]); 
+            return view('novedades.sinmarcaciones',compact('funcionarios','fecha'));
+
+
+        } 
+        else
+        {
+            $fecha = date('Y-m-d');
+            $funcionarios = DB::table('funcionarios')->whereNotIn('ci', function($q) use ($fecha) {
+                $q->select('ci')->from('marcaciones')->whereDate('fecha','=',$fecha);
+            })->paginate(10);
+            $funcionarios = $funcionarios->appends(['fecha'=>$fecha]); 
+            return view('novedades.sinmarcaciones',compact('funcionarios','fecha'));
+        }
+
+
+       
+
+    }
+
+
+    // $fecha  = $request->fecha;
+    // $funcionarios = DB::table('funcionarios')->whereNotIn('ci', function($q){
+    //     $q->select('ci')->from('marcaciones');
+    // })->paginate(10);
+    // dd($funcionarios);
+    // return view('novedades.sinmarcaciones',compact('funcionarios'));
+
     
 
 

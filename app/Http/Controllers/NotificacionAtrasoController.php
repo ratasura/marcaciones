@@ -6,9 +6,9 @@ use App\Funcionario;
 use App\Historico;
 use App\Http\Requests\historicoFormRequest;
 use App\Mail\NotificacionAtraso;
+use App\Novedad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-
 
 
 class NotificacionAtrasoController extends Controller
@@ -32,9 +32,13 @@ class NotificacionAtrasoController extends Controller
         $mail = trim($mail);
         //$num  = strlen($fecha);
         $minutosatraso = intval(substr($fecha, 14,2)) ; 
+        $horaMarcacion = substr($fecha, 11,5);
+        $texto= 'Su marcación registrada a las '. $horaMarcacion . 'representa un atraso 
+        y ha sido registrado en la base de datos del sistema.
+        Por favor, acérquese a la unidad de TThh para gestionar el mismo.' ;
         //$type = gettype($rest);
-        //dd($id,$ci,$nombre,$fecha,$minutosatraso);
-        //Mail::to($mail)->send(new NotificacionAtraso);
+        //dd($id,$ci,$nombre,$fecha,$horaMarcacion);
+        Mail::to($mail)->send(new NotificacionAtraso( $funcionario, $fecha, $texto));
         $historico = new Historico();
         $historico->id_funcionario=$id;
         $historico->ci=$ci;
@@ -42,8 +46,29 @@ class NotificacionAtrasoController extends Controller
         $historico->fechaincidente=$fecha;
         $historico->minutosatraso=$minutosatraso;
         $historico->save();
-        return back();
+        return back()->with('flash','El funcionario ha sido notificado');
         
+    }
+
+    public function notificanovedad($id, $fecha){
+
+        $funcionario = Funcionario::findOrFail($id);
+        $mail = $funcionario->mail;
+        $ci = $funcionario->ci;
+        $nombre = $funcionario->nombre;
+        $mail = trim($mail);
+        $tipo = 1;
+        $texto= 'No registra marcaciones';
+       // dd($id,$ci,$nombre,$fecha,$tipo,$mail);
+        Mail::to($mail)->send(new NotificacionAtraso($fecha, $funcionario));
+        $novedad =  new Novedad();
+        $novedad->id_funcionario=$id;
+        $novedad->ci=$ci;
+        $novedad->nombre= $nombre;
+        $novedad->fechaincidente=$fecha;
+        $novedad->tipo = $tipo;
+        $novedad->save();
+        return back()->with('flash','El funcionario ha sido notificado');
     }
 
     /**

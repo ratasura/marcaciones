@@ -27,6 +27,17 @@
  </div>
 
  <div class="row">
+     {{-- mensajes flash --}}
+
+            @if (session('flash'))
+                <div class="alert alert-success" role="alert">
+                    <strong>Aviso</strong> {{session('flash')}}
+                    <button type="button" class="close" data-dismiss="alert" alert-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+             {{-- mensajes flash --}}
     <div class="col-lg-12">
         <table class="table table-bordered table-hover table-striped">
             <thead>

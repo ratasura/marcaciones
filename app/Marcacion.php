@@ -13,7 +13,5 @@ class Marcacion extends Model
     public $timestamps = false;
 
 
-    public function scopeMarcaciones($query) {
-        return $query->where('ci', '!=','0');
-     }
+    
 }

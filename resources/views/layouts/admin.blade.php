@@ -21,6 +21,7 @@
 
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
+    
     <div class="wrapper">
 
       <header class="main-header">
@@ -92,6 +93,18 @@
             </li>
             <li class="treeview">
               <a href="#">
+                <i class="fa fa-user"></i>
+                <span>Funcionarios</span>
+                 <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{url('funcionarios')}}"><i class="fa fa-circle-o"></i>Listar funcionarios</a></li>
+                {{-- <li><a href="{{url('compras/proveedor')}}"><i class="fa fa-circle-o"></i>Proveedores</a></li> --}}
+              </ul>
+            </li>
+
+            <li class="treeview">
+              <a href="#">
                 <i class="fa fa-cog"></i>
                 <span>Ingreso de datos</span>
                 <i class="fa fa-angle-left pull-right"></i>
@@ -102,20 +115,7 @@
                 
               </ul>
             </li>
-
-
-
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-user"></i>
-                <span>Funcionarios</span>
-                 <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="{{url('funcionarios')}}"><i class="fa fa-circle-o"></i>Listar funcionarios</a></li>
-                {{-- <li><a href="{{url('compras/proveedor')}}"><i class="fa fa-circle-o"></i>Proveedores</a></li> --}}
-              </ul>
-            </li>
+            
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-clock-o"></i>
@@ -124,7 +124,22 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="{{url('historico')}}"><i class="fa fa-circle-o"></i> Notificar</a></li>
-                <li><a href="{{url('atrasos')}}"><i class="fa fa-circle-o"></i> Ver</a></li> 
+                <li><a href="{{url('atrasos')}}"><i class="fa fa-circle-o"></i> Gestionar</a></li> 
+                
+
+              </ul>
+            </li>
+
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-plus-circle"></i>
+                <span>Novedades</span>
+                 <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{url('sinmarcaciones')}}"><i class="fa fa-circle-o"></i> Funcionarios sin marcación</a></li>
+                <li><a href="{{url('atrasos')}}"><i class="fa fa-circle-o"></i> Abandonos</a></li> 
+                
 
               </ul>
             </li>
@@ -203,9 +218,9 @@
       <!--Fin-Contenido-->
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
-          <b>Version</b> 2.3.0
+          <b>Version</b> 1.0
         </div>
-        <strong>Copyright &copy; 2017 <a href="www.pachasoft.com"></a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2020 <a href="www.pachasoft.com"></a>.</strong> All rights reserved.
       </footer>
 
 

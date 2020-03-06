@@ -34,6 +34,7 @@ Route::post('historico','HistoricoController@indexbusqueda')->name('historico');
 
 // envio de notificaciones 
 Route::get('notificar/{id}/{fecha}', 'NotificacionAtrasoController@index')->name('notificar');
+Route::get('notificarnovedad/{id}/{fecha}', 'NotificacionAtrasoController@notificanovedad')->name('notificarnovedad');
 
 // manejo de atrasos en la tabla historicos
 Route::resource('atrasos','historicoAtrasoController')->except(['create']);
@@ -45,8 +46,10 @@ Route::get('marcaciones-funcionarios-pdf/{fecInicio}/{fecFinal}/{ci}','ReportesC
 Route::get('totalatrasospdf','ReportesController@totalAtrasosPdf')->name('totalatrasospdf');
 Route::get('totalatrasos','ReportesController@totalatrasos');
 
-// Route::get('totalatrasospdf','ReportesController@totalAtrasosPdf')->name('totalatrasos');
-// Route::get('total-atrasos-pdf/{fecInicio}/{fecFinal}/{nombre}','ReportesController@totalAtrasosPdf')->name('totalAtrasos');
 
+// NOVEDADES (usuarios sin marcaciones, etc)
+
+Route::get('sinmarcaciones','HistoricoController@sinmarcaciones')->name('sinmarcaciones');
+Route::post('sinmarcaciones','HistoricoController@sinmarcaciones')->name('sinmarcaciones');
 
 
